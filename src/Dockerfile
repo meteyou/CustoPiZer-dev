@@ -1,16 +1,16 @@
 # syntax=docker/dockerfile:1
 ARG VERSION="bookworm"
-ARG RELEASE_NAME=${VERSION}-backports
-FROM debian:${RELEASE_NAME}
+FROM debian:${VERSION}-backports
 
-ENV RELEASE_NAME=${RELEASE_NAME}
+ENV VERSION=${VERSION}
 ENV PACKAGES="binfmt-support build-essential lsof sudo util-linux fdisk"
 ENV BPO="qemu-system qemu-user-static"
+ENV BPO_TARGET="${VERSION}-backports"
 
 RUN set -ex \
     && apt-get update \
     && apt-get install --no-install-recommends --yes ${PACKAGES} \
-    && apt-get install --no-install-recommends --yes -t ${RELEASE_NAME} ${BPO} \
+    && apt-get install --no-install-recommends --yes -t "${BPO_TARGET}" ${BPO} \
     && apt autoremove \
     && rm -rf /var/lib/apt/lists/*
 
