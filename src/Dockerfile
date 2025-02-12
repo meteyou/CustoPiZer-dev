@@ -1,6 +1,7 @@
 # syntax=docker/dockerfile:1
 ARG VERSION="bookworm"
 FROM debian:${VERSION}-backports
+ARG VERSION
 
 ENV VERSION=${VERSION}
 ENV PACKAGES="binfmt-support build-essential lsof sudo util-linux fdisk"
