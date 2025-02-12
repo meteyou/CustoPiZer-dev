@@ -9,7 +9,7 @@ ENV BPO="qemu-system qemu-user-static"
 RUN set -ex \
     && apt-get update \
     && apt-get install --no-install-recommends --yes ${PACKAGES} \
-    && apt-get install --no-install-recommends --yes -t "${VERSION}" ${BPO} \
+    && apt-get install --no-install-recommends --yes -t ${VERSION} ${BPO} \
     && apt autoremove \
     && rm -rf /var/lib/apt/lists/*
 
