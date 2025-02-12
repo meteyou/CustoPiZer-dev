@@ -2,6 +2,7 @@
 ARG VERSION="bookworm"
 FROM debian:${VERSION}-backports
 
+ENV VERSION=${VERSION}
 ENV PACKAGES="binfmt-support build-essential lsof sudo util-linux fdisk"
 ENV BPO="qemu qemu-user-static"
 
