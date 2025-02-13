@@ -22,6 +22,11 @@ then
   rm -r /home/"${BASE_USER}"/.pydistutils.cfg
 fi
 
+if [[ -f /etc/resolv.conf.orig && ("${EDITBASE_DISTRO}" == "armbian" || "${EDITBASE_DISTRO}" == "ubuntu") ]]; then
+  [ -f /etc/resolv.conf ] && rm /etc/resolv.conf
+  mv /etc/resolv.conf.orig /etc/resolv.conf || true
+fi
+
 # Remove common.sh after build (https://github.com/OctoPrint/CustoPiZer/issues/13)
 if [ -f "/common.sh" ]; then
     rm -f /common.sh
