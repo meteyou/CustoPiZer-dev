@@ -69,7 +69,7 @@ function execute_chroot_script() {
     fi
   fi
   
-  echo "Running $1 in chroot..."
+  echo "::group::Running $1 in chroot..."
   cp $1 chroot_script
   chmod 755 chroot_script
   cp "$DIR/common.sh" common.sh
@@ -87,6 +87,8 @@ function execute_chroot_script() {
     echo "Building on ARM device a armv7l/aarch64/arm64 system, not using qemu"
     chroot . /bin/bash /chroot_script
   fi
+
+  echo "::endgroup::"
   
   #cleanup
   rm chroot_script
