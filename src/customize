@@ -108,10 +108,7 @@ install_fail_on_error_trap
 unmount_image $EDITBASE_MOUNT_PATH force || true
 
 pushd $EDITBASE_WORKSPACE
-  if [ -f output.img ]; then
-    echo "WARNING: Cleaning up 'output.img' - the outdated file has been removed"
-    rm output.img
-  fi
+  [ -f "output.img" ] && rm -f "output.img"
 
   cp $IMAGE output.img
   EDITBASE_IMG_PATH=$EDITBASE_WORKSPACE/output.img
