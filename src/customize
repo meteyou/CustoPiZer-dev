@@ -44,7 +44,9 @@ fi
 function copy_files() {
   #move filesystem files
   if [ -d "$1" ]; then
+    echo "::group::Copying $1"
     cp -vr --preserve=mode,timestamps "$1" .
+    echo "::endgroup::"
   fi
 }
 
