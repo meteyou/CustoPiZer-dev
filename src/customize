@@ -72,6 +72,10 @@ function execute_chroot_script() {
   fi
   
   echo "::group::Running $1 in chroot..."
+
+  # Start timer for debug output
+  SECONDS=0
+
   cp $1 chroot_script
   chmod 755 chroot_script
   cp "$DIR/common.sh" common.sh
@@ -91,6 +95,13 @@ function execute_chroot_script() {
   fi
 
   echo "::endgroup::"
+
+  # Output elapsed time
+  elapsed_time=$SECONDS
+  hours=$((elapsed_time / 3600))
+  minutes=$(( (elapsed_time % 3600) / 60 ))
+  seconds=$((elapsed_time % 60))
+  printf "DEBUG: Execution took %02d:%02d:%02d (hh:mm:ss)\n" "$hours" "$minutes" "$seconds"
   
   #cleanup
   rm chroot_script
