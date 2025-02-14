@@ -23,6 +23,7 @@ then
 fi
 
 if [[ -f /etc/resolv.conf.orig ]]; then
+  echo "Restoring original resolv.conf"
   [ -f /etc/resolv.conf ] && rm /etc/resolv.conf
   mv /etc/resolv.conf.orig /etc/resolv.conf || true
 fi
