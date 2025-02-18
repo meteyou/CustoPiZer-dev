@@ -13,6 +13,9 @@ RUN set -ex \
     && apt autoremove \
     && rm -rf /var/lib/apt/lists/*
 
+RUN set -ex \
+    && ls -lt /etc/binfmt.d/*
+
 COPY . /CustoPiZer
 
 ENTRYPOINT [ "/bin/bash" ]
