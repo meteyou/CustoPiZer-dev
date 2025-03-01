@@ -22,7 +22,12 @@ then
   rm -r /home/"${BASE_USER}"/.pydistutils.cfg
 fi
 
-if [ -e /etc/resolv.conf.orig ]; then
+if [ -f /etc/resolv.conf.link ]; then
+  echo "Restoring original symlink for resolv.conf"
+  resolvconf_target=$(cat /etc/resolv.conf.link)
+  ln -sf "${resolvconf_target}" /etc/resolv.conf
+  rm /etc/resolv.conf.link
+elif [ -e /etc/resolv.conf.orig ]; then
   echo "Restoring original resolv.conf"
   [ -f /etc/resolv.conf ] && rm /etc/resolv.conf
   mv /etc/resolv.conf.orig /etc/resolv.conf || true
