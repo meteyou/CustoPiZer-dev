@@ -51,7 +51,7 @@ runs:
           version=":${{ inputs.custopizer }}"
         fi
 
-        command="--rm --privileged $envs -v ${{ inputs.workspace }}:/CustoPiZer/workspace -v ${{ inputs.scripts }}:/CustoPiZer/workspace/scripts $config_mount ghcr.io/octoprint/custopizer$version"
+        command="--rm --privileged $envs -v ${{ inputs.workspace }}:/CustoPiZer/workspace -v ${{ inputs.scripts }}:/CustoPiZer/workspace/scripts $config_mount ghcr.io/meteyou/custopizer-dev$version"
 
         echo "About to execute 'docker run $command'..."
 
