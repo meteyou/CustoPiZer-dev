@@ -12,7 +12,7 @@ concurrency:
   group: ${{ github.workflow }}
 
 env:
-  IMAGE_NAME: ghcr.io/octoprint/custopizer
+  IMAGE_NAME: ghcr.io/meteyou/custopizer-dev
 
 jobs:
   build:
@@ -137,7 +137,7 @@ jobs:
           echo "EDITBASE_ARCH=$EDITBASE_ARCH" >> $GITHUB_ENV
 
       - name: 🧪 Perform test build using the action
-        uses: OctoPrint/CustoPiZer@main
+        uses: meteyou/custopizer-dev@main
         with:
           workspace: ${{ github.workspace }}/workspace
           scripts: ${{ github.workspace }}/scripts
